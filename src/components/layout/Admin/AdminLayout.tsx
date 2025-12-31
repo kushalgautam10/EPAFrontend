@@ -17,13 +17,13 @@ import {
   Fade
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { getTheme } from '../../theme/theme';
 import { motion } from 'framer-motion';
-import Sidebar from '../../components/Sidebar';
-import Breadcrumbs from '../../components/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { clearUser } from '../../store/authSlice';
+import { getTheme } from '../../../theme/theme';
+import { clearUser } from '../../../store/authSlice';
+import { RootState } from '../../../store/store';
+import Sidebar from '../../common/Sidebar';
+import Breadcrumbs from '../../common/Breadcrumb';
 
 const DRAWER_WIDTH = 280;
 const COLLAPSED_WIDTH = 72;
@@ -106,7 +106,7 @@ const AdminLayout: React.FC = () => {
 
       <Box sx={{ p: 2, textAlign: collapsed ? 'center' : 'left' }}>
         <Typography variant="body2" color="text.secondary">
-          © 2025 PrepX
+          © 2025 BodhaAcademy
         </Typography>
       </Box>
     </Box>
@@ -158,7 +158,7 @@ const AdminLayout: React.FC = () => {
                   color: 'inherit'
                 }}
               >
-                PrepX
+                Bodha
               </Typography>
             </Box>
 

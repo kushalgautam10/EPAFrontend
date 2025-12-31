@@ -1,5 +1,6 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { ReactNode } from 'react';
@@ -23,6 +24,11 @@ path: '/admin'
 title: 'Users',
 icon: <PeopleIcon />,
 path: '/admin/users'
+},
+{
+title: 'Roles',
+icon: <PermIdentityIcon />,
+path: '/admin/roles'
 },
 {
 title: 'Settings',

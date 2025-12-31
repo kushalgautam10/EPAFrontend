@@ -16,12 +16,13 @@ import {
   useDeleteCategoryMutation,
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
-} from "../../api/categoryApi";
+} from "../../../api/categoryApi";
 
-import { Category } from "../../types/category";
-import { AppDataGrid } from "../Common/DataGrid";
-import { DeleteConfirmDialog } from "../Common/deleteDialog";
 import { CategoryForm } from "./categoryForm";
+import { Category } from "../../../types/category";
+import { AppDataGrid } from "../../../components/common/DataGrid";
+import { DeleteConfirmDialog } from "../../../components/common/deleteDialog";
+import { useSnackbar } from "../../../hooks/useSnackbar";
 
 const CategoryList = () => {
   const [paginationModel, setPaginationModel] =
@@ -29,7 +30,7 @@ const CategoryList = () => {
       page: 0,
       pageSize: 10,
     });
-
+  const { showSnackbar } = useSnackbar();
   const [openForm, setOpenForm] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [selected, setSelected] = useState<Category | null>(null);
@@ -55,27 +56,48 @@ const CategoryList = () => {
   };
 
   const handleSubmit = async (payload: Partial<Category>) => {
-    if (payload.id) {
+       if (payload.id) {
       await updateCategory(payload).unwrap();
+       showSnackbar("Category updated successfully");
     } else {
       await createCategory(payload).unwrap();
+       showSnackbar("Category added successfully");
     }
     setOpenForm(false);
   };
 
   const onConfirmDelete = async () => {
-    if (!selected) return;
+  if (!selected) return;
+  try {
     await deleteCategory(selected.id).unwrap();
     setOpenDelete(false);
-  };
+     showSnackbar("Category deleted successfully");
+  } catch (err: any) {
+    showSnackbar(err?.data?.message || "Delete failed", "error");
+  }
+};
 
   const columns: GridColDef<Category>[] = useMemo(
     () => [
-      { field: "id", headerName: "ID", width: 80 },
+       {
+      field: "serial",
+      headerName: "S.No",
+      width: 80,
+      sortable: false,
+      filterable: false,
+      renderCell: (params) => {
+        return (
+          paginationModel.page * paginationModel.pageSize +
+          params.api.getRowIndexRelativeToVisibleRows(params.id) +
+          1
+        );
+      },
+    },
       { field: "name", headerName: "Name", flex: 1 },
       { field: "description", headerName: "Description", flex: 1 },
       {
         field: "actions",
+        headerName: "Actions",
         type: "actions",
         width: 120,
         getActions: (params) => [

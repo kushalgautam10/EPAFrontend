@@ -6,7 +6,6 @@ import {
   ListItemIcon,
   ListItemText,
   Collapse,
-  Typography,
 } from "@mui/material";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -95,7 +94,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     // ----- ACTIVE STATE -----
     bgcolor: isActive ? "primary.light" : "transparent",
     color: isActive ? "primary.main" : "text.primary",
-    fontWeight: isActive ? 400 : 300,
+    fontWeight: 400,
     boxShadow: isActive ? "0 0 0 1px rgba(0,0,0,0.05)" : "none",
 
     // ----- HOVER STATE -----
@@ -128,7 +127,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       primary={item.title}
       sx={{
         "& .MuiListItemText-primary": {
-          fontWeight: isActive ? 400 : 200,
+          fontWeight: 400,
           fontSize: "0.85rem",
         },
       }}

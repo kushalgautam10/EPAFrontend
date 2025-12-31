@@ -1,14 +1,13 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import AdminLayout from '../layout/Admin/AdminLayout';
-import DashboardPage from '../pages/Common/Dashbard';
-import UserLayout from '../layout/users/UserLayout';
-import UsersPage from '../pages/Common/UserPage';
+import DashboardPage from '../features/Admin/Dashboard/Dashbard';
 import ForgotPassword from '../pages/Auth/ForgetPassword';
 import Register from '../pages/Auth/Register';
 import Login from '../pages/Auth/Login';
 import ProtectedRoute from './ProtectedRoute';
-import CategoryList from '../pages/Category/categoryList';
+import CategoryList from '../features/Admin/Category/categoryList';
+import AdminLayout from '../components/layout/Admin/AdminLayout';
+import UserLayout from '../components/layout/users/UserLayout';
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
@@ -18,10 +17,11 @@ const AppRoutes: React.FC = () => {
       <Route element={<ProtectedRoute />}>
         <Route index element={<DashboardPage />} />
         <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="users" element={<CategoryList/>} />
+        <Route path="roles" element={<CategoryList/>} />
         <Route path="settings">
           <Route path="categories" element={<CategoryList/>} />
         </Route> 
-        <Route path="users" element={<UsersPage />} />
       </Route>
       </Route>
 

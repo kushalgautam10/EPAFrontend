@@ -10,7 +10,7 @@ export const categoryApi = baseApi.injectEndpoints({
       ({
         
       query: ({ pageNumber, pageSize }) =>
-        `/v1/category?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+        `/v1/Category/GetAllCategory?pageNumber=${pageNumber}&pageSize=${pageSize}`,
       providesTags: ["Category"],
     }),
 
@@ -18,7 +18,7 @@ export const categoryApi = baseApi.injectEndpoints({
     createCategory: builder.mutation<Category, Partial<Category>>({
       
       query: (body) => ({
-        url: "/v1/category",
+        url: "/v1/Category/AddCategory",
         method: "POST",
         body,
       }),
@@ -29,7 +29,7 @@ export const categoryApi = baseApi.injectEndpoints({
     updateCategory: builder.mutation<Category,Partial<Category>>
     ({
       query: (body ) => ({
-        url: `/v1/category`,
+        url: `/v1/Category/UpdateCategory`,
         method: "PUT",
         body,
       }),
@@ -39,7 +39,7 @@ export const categoryApi = baseApi.injectEndpoints({
     // DELETE
     deleteCategory: builder.mutation<void, number>({
       query: (id) => ({
-        url: `/v1/category/${id}`,
+        url: `/v1/Category/DeleteCategory/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Category"],

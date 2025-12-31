@@ -1,8 +1,20 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { AppBar, Avatar, Box, Toolbar, Typography, ThemeProvider, CssBaseline, Breadcrumbs, Button, Container, Chip, TextField, InputAdornment } from '@mui/material';
-import { getTheme } from '../../theme/theme';
+import {Link } from 'react-router-dom';
+import { 
+  AppBar, 
+  Box, 
+  Toolbar, Typography, 
+  ThemeProvider, 
+  CssBaseline, 
+  Button, 
+  Container, 
+  Chip, 
+  TextField, 
+  InputAdornment 
+} from '@mui/material';
+
 import SearchIcon from "@mui/icons-material/Search";
+import { getTheme } from '../../../theme/theme';
 
 const AVATAR = '/avatar.png';
 

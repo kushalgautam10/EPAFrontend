@@ -34,15 +34,14 @@ const authSlice = createSlice({
     }
   }
 });
-export const isTokenExpired = (token: string): boolean => {
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    return payload.exp * 1000 < Date.now();
-  } catch {
-    return true;
-  }
-  
-};
+
+// export const isTokenExpired = (token: string): boolean => {
+//   try {
+//     const payload = JSON.parse(atob(token.split(".")[1]));
+//     return payload.exp * 1000 < Date.now();
+//   } catch {
+//     return true;
+//   }};
 
 export const loadUserFromStorage = () => (dispatch: AppDispatch) => {
   const token = localStorage.getItem("token");
@@ -50,12 +49,12 @@ export const loadUserFromStorage = () => (dispatch: AppDispatch) => {
 
   if (!token || !user) return;
 
-  if (isTokenExpired(token)) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    dispatch(clearUser());
-    return;
-  }
+  // if (isTokenExpired(token)) {
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+  //   dispatch(clearUser());
+  //   return;
+  // }
 
   dispatch(setUser({ user: JSON.parse(user), token }));
 

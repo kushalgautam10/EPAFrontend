@@ -23,7 +23,7 @@ export const authApi = baseApi.injectEndpoints({
 
 
       
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+  async onQueryStarted(arg, { queryFulfilled, dispatch }) {
     try {
       const { data } = await queryFulfilled;
       const user = data.data;
@@ -53,7 +53,7 @@ export const authApi = baseApi.injectEndpoints({
       query: (userInfo) => {
         console.log("Logging in with:", userInfo);
         return {
-          url: "/ASuth/register",
+          url: "/auth/register",
           method: "POST",
           body: userInfo,
         };

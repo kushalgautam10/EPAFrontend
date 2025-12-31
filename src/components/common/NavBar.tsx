@@ -8,7 +8,7 @@ return (
 <AppBar position="fixed" color="inherit" elevation={0} sx={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
 <IconButton onClick={onToggleSidebar}><MenuIcon /></IconButton>
-<Typography variant="h6" sx={{ fontWeight: 600 }}>PrepX</Typography>
+<Typography variant="h6" sx={{ fontWeight: 600 }}>BodhaAcademy</Typography>
 <Avatar src="/avatar.png" />
 </Toolbar>
 </AppBar>

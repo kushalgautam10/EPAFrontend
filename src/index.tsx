@@ -5,6 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux'
 import { store } from './store/store';
 import { loadUserFromStorage } from './store/authSlice';
+import { SnackbarProvider } from './providers/SnackbarProvider';
 
 
 
@@ -16,10 +17,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 <React.StrictMode>
-      <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <Provider store={store}> 
+      <SnackbarProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SnackbarProvider>
   </Provider>
   </React.StrictMode>
 );
